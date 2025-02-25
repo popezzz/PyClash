@@ -1,13 +1,11 @@
 import customtkinter as ctk                                             #Modern and customizable library for user interface based on TKinter. https://customtkinter.tomschimansky.com/
 from customtkinter import *
-import CTkMessagebox as msgbox                                          #CustomTKinter based pop-up extension. https://github.com/Akascape/CTkMessagebox
 from tkinter import ttk
-import PIL                                                              #library for image rendering
-from PIL import Image
 from pydub import AudioSegment
 import random
 import time
 from pydub.playback import play
+import menuPage
 
 class Game(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -39,7 +37,7 @@ class Game(ctk.CTkFrame):
                                         fg_color="#FFD300", hover_color="#FEBE00", font=("Arial", 50))
         self.button4.place(relx=self.getRandomCoordinate(), rely=self.getRandomCoordinate(), anchor="center")
 
-        self.time.after(0, self.timeCountdown())
+        self.time.after(0, self.timeCountdown)
 
     #generate a random number for each button
     def genRandomNumber(self):
@@ -52,11 +50,38 @@ class Game(ctk.CTkFrame):
     #timer countdown
     def timeCountdown(self):
         num = int(self.time.cget("text"))
-        if num != 0:
+        if num > 1:
             res= str(num-1)
             self.time.configure(text=res)
             self.time.after(1000, self.timeCountdown)
-        
+        #time's up
+        elif num == 1:
+            self.time.after(0, self.result())
+
+    #get the result
+    def result(self):
+        #check all numbers
+        num1 = str(self.button1.cget("text")) == "0"
+        num2 = str(self.button2.cget("text")) == "0"
+        num3 = str(self.button3.cget("text")) == "0"
+        num4 = str(self.button4.cget("text")) == "0"
+        #destroy most graphical inputs
+        self.frame.destroy()
+        self.button1.destroy()
+        self.button2.destroy()
+        self.button3.destroy()
+        self.button4.destroy()
+        #communicate result
+        if num1 and num2 and num3 and num4:
+            self.time.configure(text="You most likely won")
+        else:
+            self.time.configure(text="You most likely lost")
+        #return to menu
+        self.after(2500, self.goToMenu)
+
+    #return to menu
+    def goToMenu(self):
+        self.master.switch_frame(menuPage.MenuPage) 
 
     #countdown for each button
     def countdown1(self):
