@@ -20,13 +20,14 @@ you should run the following commands:
 ``` bash
 cd src
 python3 -m venv yourVenvFolderName
-mv main.py menuPage.py requirements.txt yourVenvFolderName
+cp main.py menuPage.py requirements.txt yourVenvFolderName
 cd yourVenvFolderName
+source bin/activate
 pip install -r requirements.txt
 ```
 
 If you feel like you don't need to use a virtual environment (most likely since you
-use Windows), you can use pip install -r requirements.txt right away.
+use Windows), you can use __pip install -r requirements.txt__ right away.
 
 Finally, you can run your program!
 
@@ -38,4 +39,5 @@ python3 main.py
 Sure, why not.
 
 _Please press 1 in the comment section if you're a big fan of_ ***large horse.***
-    -FeedBackGaming
+
+   -FeedBackGaming
