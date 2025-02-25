@@ -9,26 +9,26 @@ import menuPage
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
-        #informazioni principali
+        #main info
         self.title("PyClash")
         self.geometry("1920x1080")
         self.wm_attributes("-fullscreen", True)
         self.resizable(0,0)
         self.grid_columnconfigure((0, 1), weight=1)
-        #inzia alla pagina iniziale (mettendo None come frame corrente)
+        #start to initial page
         self._frame = None
-        #da implementare controllo cookie di sessione
         self.switch_frame(menuPage.MenuPage)
 
-    #funzione utilizzata per cambiare le varie pagine
+    #used to switch the various pages
     def switch_frame(self, frame_class):
         new_frame = frame_class(master=self)
-        #se vi è già un frame (una pagina) in uso, essa viene distrutta
+        #if there's another frame initialized, destroy it
         if self._frame is not None:
             self._frame.destroy()
-        #inizializzo la nuova pagina
+        #initialize the new frame
         self._frame = new_frame
         self._frame.pack()
 
+#main starts the app
 app = App()
 app.mainloop()
