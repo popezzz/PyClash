@@ -7,7 +7,8 @@ I just felt like it lol. Didn't take me much time anyway.
 ## Can I use this?
 __ONLY IF YOU GIVE ME A SLICE OF PIZZA.__
 
-On a serious note, yes you can. Please __READ THE LICENSE.__
+On a serious note, yes you can. _Only if you feel like it._
+Please [__READ THE LICENSE.__](LICENSE)
 
 ## What are the requirements?
 Just have python installed I guess. lol
@@ -33,4 +34,8 @@ Finally, you can run your program!
 python3 main.py
 ```
 
+## Add a quote at the end of the README?
+Sure, why not.
 
+_Please press 1 in the comment section if you're a big fan of_ ***large horse.***
+    -FeedBackGaming
