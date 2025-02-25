@@ -1,0 +1,4 @@
+pillow
+customtkinter
+tk
+ctkmessagebox
