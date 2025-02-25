@@ -6,12 +6,17 @@ import PIL                                                              #library
 from PIL import Image
 from pydub import AudioSegment
 import random
+import time
 from pydub.playback import play
 
 class Game(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
         self.configure(width=1920, height=1080)
+
+        #timer text
+        self.time = ctk.CTkLabel(self, font=("Times New Roman Bold", 150), text="6")
+        self.time.place(relx=0.5, rely=0.2, anchor="center")
 
         #area in which numbers generally spawn
         self.frame = ctk.CTkFrame(self, width=1500, height=700, fg_color="#7F7F7F")
@@ -33,7 +38,9 @@ class Game(ctk.CTkFrame):
         self.button4 = ctk.CTkButton(self.frame, text=self.genRandomNumber(), height=150, width=150, command=self.countdown4,
                                         fg_color="#FFD300", hover_color="#FEBE00", font=("Arial", 50))
         self.button4.place(relx=self.getRandomCoordinate(), rely=self.getRandomCoordinate(), anchor="center")
-    
+
+        self.time.after(0, self.timeCountdown())
+
     #generate a random number for each button
     def genRandomNumber(self):
         return random.randint(3,10)
@@ -41,6 +48,15 @@ class Game(ctk.CTkFrame):
     #random relative coordinate for each button
     def getRandomCoordinate(self):
         return random.random()
+
+    #timer countdown
+    def timeCountdown(self):
+        num = int(self.time.cget("text"))
+        if num != 0:
+            res= str(num-1)
+            self.time.configure(text=res)
+            self.time.after(1000, self.timeCountdown)
+        
 
     #countdown for each button
     def countdown1(self):
