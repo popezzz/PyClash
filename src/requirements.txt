@@ -2,3 +2,4 @@ pillow
 customtkinter
 tk
 ctkmessagebox
+pydub
