@@ -6,6 +6,7 @@ import PIL                                                              #library
 from PIL import Image
 from pydub import AudioSegment
 from pydub.playback import play
+import game
 
 class MenuPage(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -29,7 +30,7 @@ class MenuPage(ctk.CTkFrame):
 
     def start_callback(self):
         print("Game is going to start!")
-        #self.master.switch_frame(gameFrame.GameFrame)
+        self.master.switch_frame(game.Game)
 
     def exit_callback(self):
         print("Bye bye!")
